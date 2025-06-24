@@ -58,10 +58,10 @@
     <div class="logo">🛡️ CloakMe</div>
     <nav>
       <a href="dashboard.php">Dashboard</a>
-      <a href="darkweb.php">Dark Web Scanner</a>
+      <a href="scan.php">Dark Web Scanner</a>
       <a href="social_analyzer.php">Social Analyzer</a>
       <a href="securevault.php">SecureVault</a>
-      <a href="logout.php">Logout</a>
+      <a href="../php/logout.php">Logout</a>
     </nav>
   </header>
 
