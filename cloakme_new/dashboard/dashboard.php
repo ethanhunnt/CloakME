@@ -59,7 +59,8 @@
     <nav>
       <a href="dashboard.php">Dashboard</a>
       <a href="scan.php">Dark Web Scanner</a>
-      <a href="social_analyzer.php">Social Analyzer</a>
+      <a href="social_analyzer.php">Insta Social Analyzer</a>
+	  <a href="twitter_analyzer.php">Twitter Social Analyzer</a>
       <a href="securevault.php">SecureVault</a>
       <a href="../php/logout.php">Logout</a>
     </nav>

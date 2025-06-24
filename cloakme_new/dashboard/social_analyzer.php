@@ -7,6 +7,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<header>
+    <div class="logo">🛡️ CloakMe</div>
+    <nav>
+      <a href="dashboard.php">Dashboard</a>
+      <a href="scan.php">Dark Web Scanner</a>
+      <a href="social_analyzer.php">Insta Social Analyzer</a>
+	  <a href="twitter_analyzer.php">Twitter Social Analyzer</a>
+      <a href="securevault.php">SecureVault</a>
+      <a href="../php/logout.php">Logout</a>
+    </nav>
+  </header>
+
     <div class="container">
         <h1>Analyze Social Media Exposure</h1>
         <div>
