@@ -17,6 +17,20 @@
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">🛡️ CloakMe</div>
+    <nav>
+      <a href="dashboard.php">Dashboard</a>
+      <a href="scan.php">Dark Web Scanner</a>
+      <a href="social_analyzer.php">Insta Social Analyzer</a>
+	  <a href="twitter_analyzer.php">Twitter Social Analyzer</a>
+	  <a href="linkedin_analyzer.php">LinkedIn Social Analyzer</a>
+	  <a href="instagram_impersonation_detect.php">Insta Soc Detect</a>
+      <a href="securevault.php">SecureVault</a>
+      <a href="../php/logout.php">Logout</a>
+    </nav>
+  </header>
+
   <h1>Instagram Impersonation Detector</h1>
   <label>Actual Username:</label>
   <input type="text" id="actualUsername" placeholder="e.g. mipalkarofficial" />

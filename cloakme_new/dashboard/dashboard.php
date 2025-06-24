@@ -62,6 +62,7 @@
       <a href="social_analyzer.php">Insta Social Analyzer</a>
 	  <a href="twitter_analyzer.php">Twitter Social Analyzer</a>
 	  <a href="linkedin_analyzer.php">LinkedIn Social Analyzer</a>
+	  <a href="instagram_impersonation_detect.php">Insta Soc Detect</a>
       <a href="securevault.php">SecureVault</a>
       <a href="../php/logout.php">Logout</a>
     </nav>
