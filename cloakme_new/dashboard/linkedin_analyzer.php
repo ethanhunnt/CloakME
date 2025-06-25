@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-	  <header>
+	 <header>
     <div class="logo">🛡️ CloakMe</div>
     <nav>
       <a href="dashboard.php">Dashboard</a>
@@ -15,10 +15,12 @@
 	  <a href="twitter_analyzer.php">Twitter Social Analyzer</a>
 	  <a href="linkedin_analyzer.php">LinkedIn Social Analyzer</a>
 	  <a href="instagram_impersonation_detect.php">Insta Soc Detect</a>
+	  <a href="twitter_impersonation.html">Twttr Soc Detect</a>
       <a href="securevault.php">SecureVault</a>
       <a href="../php/logout.php">Logout</a>
     </nav>
   </header>
+  
 	<div class="container">
     <h1>LinkedIn Exposure Score</h1>
     <form id="analyzer-form">
