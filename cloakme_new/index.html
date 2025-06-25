@@ -22,10 +22,42 @@
     <h1>Digital Security for the Elite</h1>
     <p>Protect your privacy and reputation with cutting-edge monitoring and security tools.</p>
 
-    <form>
-      <input type="email" placeholder="Enter your email" />
-      <button type="submit">Sign Up</button>
-    </form>
+	
+	<form id="subscribe-form" method="POST" action="php/subscription.php">
+	  <input type="email" name="email" placeholder="Enter your email" required>
+	  <button type="submit">Sign Up</button>
+	</form>
+	<div id="sub-msg" style="margin-top:10px; font-size:14px;"></div>
+
+	<script>
+	  document.getElementById("subscribe-form").addEventListener("submit", async function(e) {
+		e.preventDefault();
+		const formData = new FormData(this);
+		const response = await fetch("php/subscribe.php", {
+		  method: "POST",
+		  body: formData
+		});
+		const result = await response.text();
+		const msgBox = document.getElementById("sub-msg");
+
+		if (result === "success") {
+		  msgBox.innerText = "✅ Subscribed successfully!";
+		  msgBox.style.color = "lightgreen";
+		} else if (result === "duplicate") {
+		  msgBox.innerText = "📩 You’re already subscribed.";
+		  msgBox.style.color = "orange";
+		} else if (result === "invalid") {
+		  msgBox.innerText = "⚠️ Invalid email address.";
+		  msgBox.style.color = "orange";
+		} else {
+		  msgBox.innerText = "❌ Subscription failed.";
+		  msgBox.style.color = "red";
+		}
+	  });
+	</script>
+
+	
+	
 
     <img src="https://tse2.mm.bing.net/th?id=OIF.L2GiakJ9gBCTBSAj3WKdjg&w=316&h=316&c=7" class="banner" alt="Security Banner" style="width: 216 px; max-height: 106 px; object-fit: cover; border-radius: 10px; display: block; margin: 20px auto 0;" />
 
