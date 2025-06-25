@@ -4,37 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Twitter Exposure Analyzer</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 40px;
-        }
-        input, button {
-            padding: 10px;
-            font-size: 16px;
-            margin: 10px;
-            border-radius: 5px;
-        }
-        input {
-            background-color: #1e1e1e;
-            color: white;
-            border: 1px solid #333;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-        }
-        #resultBox {
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            white-space: pre-wrap;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 	  <header>
@@ -50,8 +20,9 @@
       <a href="../php/logout.php">Logout</a>
     </nav>
   </header>
-
-    <h1>Twitter Exposure Analyzer</h1>
+	
+	<div class="container">
+    <h1>Twitter Exposure Score</h1>
     <input type="text" id="username" placeholder="Enter Twitter Username">
     <button onclick="analyze()">Analyze</button>
     <div id="resultBox">Results will appear here...</div>
@@ -78,5 +49,6 @@
             resultBox.innerHTML = `<b>Score:</b> <span style="color:${color}">${data.score}</span><br><br><b>Raw Response:</b><br><pre>${JSON.stringify(data.raw_response, null, 2)}</pre>`;
         }
     </script>
+	</div>
 </body>
 </html>

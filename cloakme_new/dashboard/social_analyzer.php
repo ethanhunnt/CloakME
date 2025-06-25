@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Analyze Social Media Exposure</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
   </header>
 
     <div class="container">
-        <h1>Analyze Social Media Exposure</h1>
+        <h1>Instagram Exposure Score</h1>
         <div>
             <label for="username">Instagram Username:</label>
             <input type="text" id="username" name="username">

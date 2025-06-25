@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Dark Web Scanner</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -23,6 +23,7 @@
     </nav>
   </header>
 
+<div class="container">
 <section class="hero">
   <h1>Dark Web Breach Results</h1>
   <form method="POST" action="../php/real_scan.php" style="margin-bottom: 2rem;">
@@ -57,5 +58,6 @@
     }
   });
 </script>
+</div>
 </body>
 </html>

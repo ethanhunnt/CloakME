@@ -3,30 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>LinkedIn Exposure Analyzer</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px 0;
-            width: 100%%;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            border: 1px solid #444;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        .low { background-color: #2e7d32; }
-        .medium { background-color: #fbc02d; }
-        .high { background-color: #c62828; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 	  <header>
@@ -42,8 +19,8 @@
       <a href="../php/logout.php">Logout</a>
     </nav>
   </header>
-
-    <h1>LinkedIn Exposure Analyzer</h1>
+	<div class="container">
+    <h1>LinkedIn Exposure Score</h1>
     <form id="analyzer-form">
         <label for="linkedinUrl">LinkedIn Profile URL:</label>
         <input type="text" id="linkedinUrl" name="linkedinUrl" placeholder="Enter full LinkedIn URL" required>
@@ -68,5 +45,6 @@
             resultDiv.className = "result " + data.level;
         });
     </script>
+	</div>
 </body>
 </html>

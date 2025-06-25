@@ -4,17 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Instagram Impersonation Detector</title>
-  <style>
-    body { background-color: #121212; color: #fff; font-family: Arial, sans-serif; padding: 20px; }
-    h1 { color: #90caf9; }
-    input, button { margin: 10px 5px; padding: 10px; font-size: 16px; }
-    table { width: 100%; margin-top: 20px; border-collapse: collapse; }
-    th, td { padding: 8px; text-align: left; border-bottom: 1px solid #444; }
-    img { border-radius: 50%; width: 40px; height: 40px; }
-    .risk-Low { color: green; }
-    .risk-Medium { color: orange; }
-    .risk-High { color: red; }
-  </style>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <header>
@@ -31,9 +21,11 @@
     </nav>
   </header>
 
+  <div class="container">
   <h1>Instagram Impersonation Detector</h1>
   <label>Actual Username:</label>
   <input type="text" id="actualUsername" placeholder="e.g. mipalkarofficial" />
+  <br/>
   <label>Search Query (Name):</label>
   <input type="text" id="searchQuery" placeholder="e.g. mithila palkar" />
   <button onclick="analyze()">Detect Impersonators</button>
@@ -67,5 +59,6 @@
       });
     }
   </script>
+  </div>
 </body>
 </html>

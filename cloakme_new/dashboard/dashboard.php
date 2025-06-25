@@ -3,55 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CloakMe Dashboard</title>
-  <style>
-    body {
-      background-color: #121212;
-      color: #f0f0f0;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #1f1f1f;
-      padding: 15px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #333;
-    }
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: #00ffff;
-    }
-    nav a {
-      margin-left: 20px;
-      color: #9fa8da;
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffffff;
-    }
-    main {
-      padding: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    h1 {
-      color: #ffffff;
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-    .overview-chart {
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 10px;
-      min-height: 300px;
-      color: #ccc;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <header>
@@ -67,7 +19,8 @@
       <a href="../php/logout.php">Logout</a>
     </nav>
   </header>
-
+  
+  <div class="container">
   <main>
     <h1>Your CloakMe Security Overview</h1>
     <div class="overview-chart">
@@ -111,5 +64,6 @@
 </script>
 
 </main>
+</div>
 </body>
 </html>
