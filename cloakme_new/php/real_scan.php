@@ -28,13 +28,13 @@ function checkBreaches($email) {
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Scan Results</title>
-        <link rel='stylesheet' href='../css/styles.css'>
+        <link rel='stylesheet' href='../css/style.css'>
     </head>
     <body>
         <header>
             <div class='logo'>🛡️ CloakMe</div>
             <nav>
-                <a href='../dashboard/dashboard.html'>Dashboard</a>
+                <a href='../dashboard/dashboard.php'>Dashboard</a>
                 <a href='logout.php'>Logout</a>
             </nav>
         </header>
