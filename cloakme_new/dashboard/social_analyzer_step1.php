@@ -12,7 +12,7 @@
       <a href="dashboard.php">Dashboard</a>
       <a href="scan.php">Dark Web Scanner</a>
       <a href="social_analyzer_step1.php">Insta Social Analyzer</a>
-      <a href="twitter_analyzer.php">Twitter Social Analyzer</a>
+      <a href="twitter_analyzer_step1.php">Twitter Social Analyzer</a>
       <a href="linkedin_analyzer.php">LinkedIn Social Analyzer</a>
       <a href="instagram_impersonation_detect.php">Insta Soc Detect</a>
       <a href="twitter_impersonation.html">Twttr Soc Detect</a>
@@ -55,13 +55,32 @@
             html += '<p><strong>Followers:</strong> ' + data.follower_count + '</p>';
             html += '<p><strong>Posts:</strong> ' + data.media_count + '</p>';
             html += '<p><strong>Score:</strong> ' + data.score + '</p>';
+			// Recommendation based on score
+			let recommendation = "";
+			if (data.score <= 30) {
+				recommendation = "✅ Your profile is secure. Keep good practices going!";
+			} else if (data.score <= 70) {
+				recommendation = "⚠️ Medium exposure. Consider reviewing past posts and ensure that you monitor impersonation.";
+			} else {
+				recommendation = "🚨 High exposure! Remove sensitive posts, and monitor impersonation.";
+			}
+			html += '<div class="recommendation-box">' + recommendation + '</div>';
+
             html += '</div></div>';
 
             html += '<h4>Sample Posts</h4><div class="post-gallery">';
             data.posts.forEach(function(post) {
+				
+				let image = post.image_url.replace(/\\/g, '');
+				
+				html += '<a href="' + post.post_url.replace(/\\/g, '') + '" target="_blank">';
+				html += '<img class="post-img" src="' + image + '" alt="Post Image" onerror="this.style.display=\'none\'">';
+				html += '</a>';
+
+				/*
                 html += '<a href="' + post.post_url + '" target="_blank">';
                 html += '<img src="' + post.image_url + '" alt="Post Image">';
-                html += '</a>';
+                html += '</a>';*/
             });
             html += '</div>';
 

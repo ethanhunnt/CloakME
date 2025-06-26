@@ -1,6 +1,8 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["linkedinUrl"])) {
-    $linkedinUrl = urlencode($_POST["linkedinUrl"]);
+header('Content-Type: application/json');
+
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["url"])) {
+    $linkedinUrl = urlencode($_GET["url"]);
     $url = "https://fresh-linkedin-profile-data.p.rapidapi.com/get-linkedin-profile?linkedin_url=" . $linkedinUrl .
            "&include_skills=false&include_certifications=false&include_publications=false&include_honors=false" .
            "&include_volunteers=false&include_projects=false&include_patents=false&include_courses=false" .
@@ -21,6 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["linkedinUrl"])) {
     $result = json_decode($response, true);
     $data = $result["data"];
 
+    if (!$data) {
+        echo json_encode(["error" => "Profile data not found", "raw" => $result]);
+        exit;
+    }
+
     $score = 0;
 
     if (!empty($data["profile_image_url"])) $score += 15;
@@ -34,6 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["linkedinUrl"])) {
     if (!empty($data["educations"]) && count($data["educations"]) > 0) $score += 10;
     if (!empty($data["experiences"]) && count($data["experiences"]) > 2) $score += 10;
 
+    if ($score > 100) $score = 100;
+
     $level = "low";
     $message = "Minimal exposure detected.";
     if ($score > 40) {
@@ -45,8 +54,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["linkedinUrl"])) {
         $message = "High exposure! Profile is highly visible.";
     }
 
-    echo json_encode(["score" => $score, "level" => $level, "message" => $message]);
+    echo json_encode([
+        "score" => $score,
+        "level" => $level,
+        "message" => $message,
+        "name" => $data["full_name"] ?? "",
+        "headline" => $data["headline"] ?? "",
+        "about" => $data["about"] ?? "",
+        "location" => $data["location"] ?? "",
+        "image" => $data["profile_image_url"] ?? ""
+    ]);
 } else {
-    echo json_encode(["error" => "Invalid request"]);
+    echo json_encode(["error" => "Missing or invalid 'url' parameter"]);
 }
 ?>

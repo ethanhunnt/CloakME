@@ -61,3 +61,53 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+
+.recommendation-box {
+  background-color: #fff4cc; /* soft yellow */
+  padding: 10px;
+  margin: 15px 0;
+  border-left: 5px solid #f0ad4e; /* orange left bar */
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.recommendation-box i {
+  margin-right: 10px;
+  color: #f0ad4e;
+  font-size: 18px;
+}
+
+.recommendation-text {
+  color: #000000 !important;        /* Solid black text */
+  font-weight: 600;                 /* Slightly bolder */
+  background-color: #fff3cd;        /* Soft yellow */
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: block;
+}
+
+
+.post-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.post-gallery a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.post-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
