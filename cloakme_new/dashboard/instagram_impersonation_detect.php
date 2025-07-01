@@ -47,7 +47,7 @@
         let html = '<table><tr><th>Profile Pic</th><th>Username</th><th>Full Name</th><th>Followers</th><th>Verified</th><th>Risk</th></tr>';
         data.forEach(u => {
           html += `<tr>
-            <td><img src="${u.profile_pic_url}" alt="pic" /></td>
+            <td><img src="${u.profile_pic_url.replace(/\\\//g, '/')}" alt="pic" width="50" height="50" /></td>
             <td>${u.username}</td>
             <td>${u.full_name}</td>
             <td>${u.followers}</td>

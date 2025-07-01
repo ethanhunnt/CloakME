@@ -32,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $data = json_decode($response, true);
   $results = [];
+  
 
+  
   foreach ($data['users'] as $entry) {
     $user = $entry['user'];
     $username = strtolower($user['username']);
@@ -41,11 +43,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $followers = 0;
 
     // Extract numeric followers if present
-    if (!empty($user['search_social_context']) && preg_match('/([\d\.]+)([kKmM]?)/', $user['search_social_context'], $match)) {
+    //if (!empty($user['search_social_context']) && preg_match('/([\d\.]+)([kKmM]?)/', $user['search_social_context'], $match))
+	/*if (!empty($user['search_social_context']) && preg_match('/([\d\.]+)\s*([kKmM]?)\s*followers/i', $user['search_social_context'], $match)) 
+		{
       $followers = (float) $match[1];
       if (strtolower($match[2]) === 'k') $followers *= 1000;
       if (strtolower($match[2]) === 'm') $followers *= 1000000;
-    }
+    }*/
+	
+	
+		$followers = 0;
+	$context = $user['search_social_context'] ?? '';
+
+	if (preg_match('/([\d\.]+)\s*([kKmM])\s*followers/i', $context, $match)) {
+		$followers = (float) $match[1];
+		$suffix = strtolower($match[2]);
+		if ($suffix === 'k') $followers *= 1000;
+		elseif ($suffix === 'm') $followers *= 1000000;
+	}
 
     $profile_pic_url = $user['profile_pic_url'] ?? '';
 

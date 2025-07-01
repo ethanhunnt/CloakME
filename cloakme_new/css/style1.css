@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #eee;
+}
+
+h2, h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #1d1d1d;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
+
+input, button {
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+input[type="text"], input[type="email"], input[type="url"] {
+  width: 60%;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+button, input[type="submit"] {
+  background-color: #00bfff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #009acd;
+}
+
+nav {
+  background-color: #222;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.recommendation-box {
+  background-color: #fff4cc; /* soft yellow */
+  padding: 10px;
+  margin: 15px 0;
+  border-left: 5px solid #f0ad4e; /* orange left bar */
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.recommendation-box i {
+  margin-right: 10px;
+  color: #f0ad4e;
+  font-size: 18px;
+}
+
+.recommendation-text {
+  color: #000000 !important;        /* Solid black text */
+  font-weight: 600;                 /* Slightly bolder */
+  background-color: #fff3cd;        /* Soft yellow */
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: block;
+}
+
+
+.post-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.post-gallery a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.post-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
