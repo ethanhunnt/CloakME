@@ -38,17 +38,51 @@
     <div id="results"></div>
   </div>
 
-  <script>
-    document.getElementById('impersonationForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const response = await fetch('../php/twitter_impersonation_detect.php', {
-        method: 'POST',
-        body: formData
-      });
-      const result = await response.text();
-      document.getElementById('results').innerHTML = result;
-    });
-  </script>
+ <script>
+  document.getElementById('impersonationForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const realUsername = document.getElementById('realUsername').value;
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+
+  const url = `../php/twitter_impersonation_detect.php?realUsername=${encodeURIComponent(realUsername)}&firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.status !== 'success') {
+      document.getElementById('results').innerHTML = `<p style="color:red;">Error: ${data.message}</p>`;
+      return;
+    }
+
+    if (data.impersonators.length === 0) {
+      document.getElementById('results').innerHTML = "<p>No impersonators found.</p>";
+      return;
+    }
+
+    let html = `<h3>Possible Impersonators</h3>
+    <table>
+      <thead><tr><th>Username</th><th>Score</th><th>Risk</th></tr></thead><tbody>`;
+
+    for (const imp of data.impersonators) {
+      const color = imp.risk === 'High' ? 'red' : imp.risk === 'Medium' ? 'orange' : 'green';
+      html += `<tr>
+        <td>@${imp.username}</td>
+        <td>${imp.score}</td>
+        <td style="color:${color};font-weight:bold;">${imp.risk}</td>
+      </tr>`;
+    }
+
+    html += '</tbody></table>';
+    document.getElementById('results').innerHTML = html;
+  } catch (err) {
+    console.error(err);
+    document.getElementById('results').innerHTML = "<p style='color:red;'>Something went wrong.</p>";
+  }
+});
+</script>
+
 </body>
 </html>

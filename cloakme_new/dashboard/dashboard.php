@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1012263395"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-1012263395');
+</script>
   <meta charset="UTF-8">
   <title>CloakMe Dashboard</title>
   <link rel="stylesheet" href="../css/style.css">
@@ -17,6 +26,7 @@
       <a href="instagram_impersonation_detect.php">Insta Soc Detect</a>
       <a href="twitter_impersonation.html">Twttr Soc Detect</a>
       <a href="securevault.php">SecureVault</a>
+	  <a href="dark_hub.php">Dark Hub Search</a>
       <a href="../php/logout.php">Logout</a>
     </nav>
   </header>
