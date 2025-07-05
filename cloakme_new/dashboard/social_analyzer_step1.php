@@ -48,39 +48,41 @@
             }
 
             let html = '<div class="profile-summary">';
-            html += '<img class="profile-pic" src="' + data.profile_pic_url + '" alt="Profile Picture">';
+            html += '<img class="profile-pic" src="' + data.profile_pic_base64 + '" alt="Profile Picture">';
             html += '<div class="profile-details">';
             html += '<p><strong>Username:</strong> ' + data.username + '</p>';
             html += '<p><strong>Full Name:</strong> ' + data.full_name + '</p>';
             html += '<p><strong>Followers:</strong> ' + data.follower_count + '</p>';
             html += '<p><strong>Posts:</strong> ' + data.media_count + '</p>';
             html += '<p><strong>Score:</strong> ' + data.score + '</p>';
-			// Recommendation based on score
-			let recommendation = "";
-			if (data.score <= 30) {
-				recommendation = "✅ Your profile is secure. Keep good practices going!";
-			} else if (data.score <= 70) {
-				recommendation = "⚠️ Medium exposure. Consider reviewing past posts and ensure that you monitor impersonation.";
-			} else {
-				recommendation = "🚨 High exposure! Remove sensitive posts, and monitor impersonation.";
-			}
-			html += '<div class="recommendation-box">' + recommendation + '</div>';
 
+            html += '<p><strong>Posts with Hashtags:</strong> ' + data.hashtag_post_count + '</p>';
+            if (data.hashtags && data.hashtags.length > 0) {
+                html += '<p><strong>Hashtags:</strong> ' + data.hashtags.map(tag => '#' + tag).join(', ') + '</p>';
+            }
+
+            html += '<p><strong>Posts with Geotags:</strong> ' + data.geo_tagged_post_count + '</p>';
+            if (data.locations && data.locations.length > 0) {
+                html += '<p><strong>Geotag Locations:</strong> ' + data.locations.join(', ') + '</p>';
+            }
+
+            let recommendation = "";
+            if (data.score <= 30) {
+                recommendation = "✅ Your profile is secure. Keep good practices going!";
+            } else if (data.score <= 70) {
+                recommendation = "⚠️ Medium exposure. Consider reviewing past posts and ensure that you monitor impersonation.";
+            } else {
+                recommendation = "🚨 High exposure! Remove sensitive posts, and monitor impersonation.";
+            }
+
+            html += '<div class="recommendation-box">' + recommendation + '</div>';
             html += '</div></div>';
 
             html += '<h4>Sample Posts</h4><div class="post-gallery">';
             data.posts.forEach(function(post) {
-				
-				let image = post.image_url.replace(/\\/g, '');
-				
-				html += '<a href="' + post.post_url.replace(/\\/g, '') + '" target="_blank">';
-				html += '<img class="post-img" src="' + image + '" alt="Post Image" onerror="this.style.display=\'none\'">';
-				html += '</a>';
-
-				/*
                 html += '<a href="' + post.post_url + '" target="_blank">';
-                html += '<img src="' + post.image_url + '" alt="Post Image">';
-                html += '</a>';*/
+                html += '<img class="post-img" src="' + post.image_base64 + '" alt="Post Image" onerror="this.style.display=\'none\'">';
+                html += '</a>';
             });
             html += '</div>';
 
