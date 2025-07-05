@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1012263395"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-1012263395');
+</script>
+
+  <meta charset="UTF-8">
+  <title>CloakMe | Digital Security</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🛡️ CloakMe</div>
+    <nav>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Support</a>
+      <a href="login/login.html">Log In</a>
+      <a href="register/register.html">Register</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <main>
+      <h1>Digital Security for the Elite</h1>
+      <p>Protect your privacy and reputation with cutting-edge monitoring and security tools.</p>
+
+      <form id="subscribe-form" method="POST" action="php/subscribe.php">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div id="sub-msg" style="margin-top:10px; font-size:14px;"></div>
+
+      <img src="images/cloakme.png" alt="CloakMe Banner" class="banner" style="width: 100%; max-width: 300px; height: auto; border-radius: 10px; display: block; margin: 20px auto;" />
+
+	  <a href="dashboard/demo_instagram_scan.php" class="cta-button">🚀 Try a Live Demo</a>
+      <section>
+        <h2>Dark Web & Leak Monitoring</h2>
+        <p>Get real-time alerts if your personal information is found on the dark web or in data breaches.</p>
+        <form onsubmit="return false;">
+          <input type="email" placeholder="example@example.com" />
+          <button type="submit">Scan</button>
+        </form>
+      </section>
+	  
+	  <div style="max-width: 720px; margin: 0 auto; padding: 20px;">
+	  <video width="100%" height="auto" controls autoplay muted style="border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+		<source src="videos/cloakme_demo_fast.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	  </video>
+	</div>
+
+	  
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("subscribe-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const response = await fetch("php/subscribe.php", {
+        method: "POST",
+        body: formData
+      });
+      const result = await response.text();
+      const msgBox = document.getElementById("sub-msg");
+
+      if (result === "success") {
+        msgBox.innerText = "✅ Subscribed successfully!";
+        msgBox.style.color = "lightgreen";
+        this.reset();
+      } else if (result === "duplicate") {
+        msgBox.innerText = "📩 You’re already subscribed.";
+        msgBox.style.color = "orange";
+      } else if (result === "invalid") {
+        msgBox.innerText = "⚠️ Invalid email address.";
+        msgBox.style.color = "orange";
+      } else {
+        msgBox.innerText = "❌ Subscription failed.";
+        msgBox.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>

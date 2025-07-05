@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Twitter Impersonation Detector</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+ <header>
+    <div class="logo">🛡️ CloakMe</div>
+    <nav>
+      <a href="dashboard.php">Dashboard</a>
+      <a href="scan.php">Dark Web Scanner</a>
+      <a href="social_analyzer_step1.php">Insta Social Analyzer</a>
+      <a href="twitter_analyzer_step1.php">Twitter Social Analyzer</a>
+      <a href="linkedin_analyzer.php">LinkedIn Social Analyzer</a>
+      <a href="instagram_impersonation_detect.php">Insta Soc Detect</a>
+      <a href="twitter_impersonation.html">Twttr Soc Detect</a>
+      <a href="securevault.php">SecureVault</a>
+      <a href="../php/logout.php">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Twitter Impersonation Detector</h2>
+    <form id="impersonationForm">
+      <label for="realUsername">Twitter Username:</label>
+      <input type="text" id="realUsername" name="realUsername" required>
+		<br/>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+		<br/>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+		<br/>
+      <button type="submit">Detect Impersonators</button>
+    </form>
+    <div id="results"></div>
+  </div>
+
+ <script>
+  document.getElementById('impersonationForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const realUsername = document.getElementById('realUsername').value;
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+
+  const url = `../php/twitter_impersonation_detect.php?realUsername=${encodeURIComponent(realUsername)}&firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.status !== 'success') {
+      document.getElementById('results').innerHTML = `<p style="color:red;">Error: ${data.message}</p>`;
+      return;
+    }
+
+    if (data.impersonators.length === 0) {
+      document.getElementById('results').innerHTML = "<p>No impersonators found.</p>";
+      return;
+    }
+
+    let html = `<h3>Possible Impersonators</h3>
+    <table>
+      <thead><tr><th>Username</th><th>Score</th><th>Risk</th></tr></thead><tbody>`;
+
+    for (const imp of data.impersonators) {
+      const color = imp.risk === 'High' ? 'red' : imp.risk === 'Medium' ? 'orange' : 'green';
+      html += `<tr>
+        <td>@${imp.username}</td>
+        <td>${imp.score}</td>
+        <td style="color:${color};font-weight:bold;">${imp.risk}</td>
+      </tr>`;
+    }
+
+    html += '</tbody></table>';
+    document.getElementById('results').innerHTML = html;
+  } catch (err) {
+    console.error(err);
+    document.getElementById('results').innerHTML = "<p style='color:red;'>Something went wrong.</p>";
+  }
+});
+</script>
+
+</body>
+</html>
